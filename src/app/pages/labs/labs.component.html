@@ -1,0 +1,19 @@
+<p>labs works!</p>
+<h2>{{ welcome }}</h2>
+<li>
+    <a href="/home">Home</a>
+</li>
+<ul>
+    <li *ngFor="let task of tasks">
+        {{ task }}
+    </li>
+</ul>
+<hr>
+<h2>{{ 'Hola '.repeat(4) }}</h2>
+<hr>
+<p>la suma es 3 + 3 es {{3 + 3}} </p>
+<p>Hola soy {{ name }} y mi edad es {{ age }} </p>
+<hr>
+<img [src]="img" alt="">
+<input type="text" [value]="name">
+<button [disabled]="disabled">Click me</button>
