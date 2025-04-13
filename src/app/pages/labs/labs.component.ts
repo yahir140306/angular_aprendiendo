@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -7,11 +7,12 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, RouterOutlet],
   templateUrl: './labs.component.html',
-  styleUrl: './labs.component.css',
+  styleUrls: ['./labs.component.css'],
 })
 export class LabsComponent {
   title = 'todo-app';
-  welcome = 'Bienvenido a mi primaera ';
+  welcome = 'Bienvenido a mi primera ';
+
   tasks = [
     'Instalar Angular CLI',
     'Crear nuevo proyecto',
@@ -19,8 +20,27 @@ export class LabsComponent {
     'Crear servicios',
   ];
 
-  name = 'Jose';
+  name = signal('Jose');
   age = 18;
   disabled = true;
   img = 'https://w3schools.com/howto/img_avatar.png';
+
+  person = {
+    name: 'Jose',
+    age: 18,
+    img: 'https://w3schools.com/howto/img_avatar.png',
+  };
+
+  clickHandler(){
+    alert('Hola')
+  }
+
+  changeHandler(event: Event) {
+   console.log(event);
+  }
+
+  keydownHandler(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+    console.log(input.value);
+  }
 }
