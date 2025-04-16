@@ -1,3 +1,10 @@
 .container {
-  padding: 3rem;
+  padding: 1.5rem;
+}
+
+section {
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0px 5px 10px #000;
+  border-radius: 10px;
 }

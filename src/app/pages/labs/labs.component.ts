@@ -28,15 +28,18 @@ export class LabsComponent {
   person = {
     name: 'Jose',
     age: 18,
-    img: 'https://w3schools.com/howto/img_avatar.png',
+    avatar: 'https://w3schools.com/howto/img_avatar.png',
   };
 
-  clickHandler(){
-    alert('Hola')
+  clickHandler() {
+    alert('Hola');
   }
 
   changeHandler(event: Event) {
-   console.log(event);
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    this.name.set(newValue);
+    // console.log(event);
   }
 
   keydownHandler(event: KeyboardEvent) {
