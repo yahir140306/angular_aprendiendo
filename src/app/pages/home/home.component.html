@@ -1,7 +1,20 @@
-<p>home works!</p>
+<h1>Home works!</h1>
 
 <ul>
-    <li>
-        <a href="/labs">Labs</a>
-    </li>
+  <li>
+    <a href="/labs">Labs</a>
+  </li>
 </ul>
+
+<section class="todo-list">
+  <ul>
+    <li *ngFor="let task of tasks()">
+      <div class="view">
+        <input class="toggle" type="checkbox">
+        <label>{{ task }}</label>
+        <button class="destroy"></button>
+      </div>
+      <input class="edit" value="buy a unicorn">
+    </li>
+  </ul>
+</section>
