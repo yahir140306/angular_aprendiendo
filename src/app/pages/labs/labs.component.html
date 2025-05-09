@@ -6,7 +6,7 @@
       <a href="/home">Home</a>
     </li>
     <ul>
-      <li *ngFor="let task of tasks">
+      <li *ngFor="let task of tasks()">
         {{ task }}
       </li>
     </ul>
@@ -31,7 +31,13 @@
     <p>(keydown)</p>
     <input type="text" [value]="person.name" (keydown)="keydownHandler($event)">
   </section>
-
+  <hr>
+  <ul>
+    <p>Total: {{  tasks().length}}</p>
+    <li *ngFor="let task of tasks(); index as i">
+       {{ i }} {{ task }}
+    </li>
+  </ul>
   <section>
     <h1>Signal</h1>
     <input type="text" [value]="name()" (change)="changeHandler($event)">

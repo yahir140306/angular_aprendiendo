@@ -5,7 +5,8 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  // imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule],
   templateUrl: './labs.component.html',
   styleUrls: ['./labs.component.css'],
 })
@@ -13,12 +14,12 @@ export class LabsComponent {
   title = 'todo-app';
   welcome = 'Bienvenido a mi primera ';
 
-  tasks = [
+  tasks = signal( [
     'Instalar Angular CLI',
     'Crear nuevo proyecto',
     'Crear componentes',
     'Crear servicios',
-  ];
+  ]);
 
   name = signal('Jose');
   age = 18;
