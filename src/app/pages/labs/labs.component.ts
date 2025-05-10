@@ -14,7 +14,7 @@ export class LabsComponent {
   title = 'todo-app';
   welcome = 'Bienvenido a mi primera ';
 
-  tasks = signal( [
+  tasks = signal([
     'Instalar Angular CLI',
     'Crear nuevo proyecto',
     'Crear componentes',
@@ -26,11 +26,11 @@ export class LabsComponent {
   disabled = true;
   img = 'https://w3schools.com/howto/img_avatar.png';
 
-  person = {
-    name: 'Jose',
+  person = signal({
+    name: 'Juanchis',
     age: 18,
     avatar: 'https://w3schools.com/howto/img_avatar.png',
-  };
+  });
 
   clickHandler() {
     alert('Hola');

@@ -20,16 +20,16 @@
   </section>
   <hr>
   <section>
-    <img [src]="person.avatar" alt="">
-    <input type="number" [value]="person.age">
+    <img [src]="person().avatar" alt="">
+    <input type="number" [value]="person().age">
     <button [disabled]="disabled">Click me</button>
-    <p>person: {{ person.name}}</p>
+    <p>person: {{ person().name}}</p>
     <button (click)="clickHandler()">click me</button>
     <button (dblclick)="clickHandler()">double me</button>
     <p>(change)</p>
-    <input type="number" [value]="person.age" (change)="changeHandler($event)">
+    <input type="number" [value]="person().age" (change)="changeHandler($event)">
     <p>(keydown)</p>
-    <input type="text" [value]="person.name" (keydown)="keydownHandler($event)">
+    <input type="text" [value]="person().name" (keydown)="keydownHandler($event)">
   </section>
   <hr>
   <ul>
@@ -42,5 +42,16 @@
     <h1>Signal</h1>
     <input type="text" [value]="name()" (change)="changeHandler($event)">
     <p>Name: {{ name() }}</p>
+  </section>
+  <section>
+    <div *ngIf="1 === 1">
+      My contend
+    </div>
+    <div *ngIf="name() === 'Juanchis'">
+      My contend - Juanchis
+    </div>
+    <div *ngIf="person().name === 'Juanchis' && person().age > 18">
+      Juanchis , es mayor de 18
+    </div>
   </section>
 </div>
