@@ -11,47 +11,63 @@
       </li>
     </ul>
   </section>
-  <hr>
+  <hr />
   <section>
-    <h2>{{ 'Hola '.repeat(4) }}</h2>
-    <hr>
-    <p>la suma es 3 + 3 es {{3 + 3}} </p>
-    <p>Hola soy {{ name() }} y mi edad es {{ age }} </p>
+    <h2>{{ "Hola ".repeat(4) }}</h2>
+    <hr />
+    <p>la suma es 3 + 3 es {{ 3 + 3 }}</p>
+    <p>Hola soy {{ name() }} y mi edad es {{ age }}</p>
   </section>
-  <hr>
+  <hr />
   <section>
-    <img [src]="person().avatar" alt="">
-    <input type="number" [value]="person().age">
+    <img [src]="person().avatar" alt="" />
+    <input type="number" [value]="person().age" />
     <button [disabled]="disabled">Click me</button>
-    <p>person: {{ person().name}}</p>
+    <p>person: {{ person().name }}</p>
     <button (click)="clickHandler()">click me</button>
     <button (dblclick)="clickHandler()">double me</button>
     <p>(change)</p>
-    <input type="number" [value]="person().age" (change)="changeHandler($event)">
+    <input
+      type="number"
+      [value]="person().age"
+      (change)="changeHandler($event)"
+    />
     <p>(keydown)</p>
-    <input type="text" [value]="person().name" (keydown)="keydownHandler($event)">
+    <input
+      type="text"
+      [value]="person().name"
+      (keydown)="keydownHandler($event)"
+    />
   </section>
-  <hr>
+  <hr />
   <ul>
-    <p>Total: {{  tasks().length}}</p>
-    <li *ngFor="let task of tasks(); index as i">
-       {{ i }} {{ task }}
-    </li>
+    <p>Total: {{ tasks().length }}</p>
+    <li *ngFor="let task of tasks(); index as i">{{ i }} {{ task }}</li>
   </ul>
   <section>
     <h1>Signal</h1>
-    <input type="text" [value]="name()" (change)="changeHandler($event)">
+    <input type="text" [value]="name()" (change)="changeHandler($event)" />
     <p>Name: {{ name() }}</p>
   </section>
   <section>
-    <div *ngIf="1 === 1">
-      My contend
-    </div>
-    <div *ngIf="name() === 'Juanchis'">
-      My contend - Juanchis
-    </div>
+    <div *ngIf="1 === 1">My contend</div>
+    <div *ngIf="name() === 'Juanchis'">My contend - Juanchis</div>
     <div *ngIf="person().name === 'Juanchis' && person().age > 18">
       Juanchis , es mayor de 18
     </div>
+  </section>
+  <section>
+    <input type="text" [value]="person().name" (change)="changeName($event)" />
+    <div [ngSwitch]="person().name">
+      <p *ngSwitchCase="'Juanchis'">yo soy juanchis</p>
+      <p *ngSwitchCase="'nicolas'">yo soy nicolas</p>
+      <p *ngSwitchCase="'ana'">yo soy ana</p>
+      <p *ngSwitchCase="'paco'">yo soy paco</p>
+      <p *ngSwitchDefault>yo no soy nadie</p>
+    </div>
+  </section>
+  <section>
+    <input type="color" [formControl]="colorCtrl" />
+    <p>color: {{ colorCtrl.value }}</p>
   </section>
 </div>
