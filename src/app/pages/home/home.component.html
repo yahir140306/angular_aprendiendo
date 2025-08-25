@@ -3,19 +3,21 @@
     <div class="container">
       <h1>My Day</h1>
       <p>All my tasks in one place</p>
+      <!-- (change)="changeHandler($event)" 👇 -->
       <input
         class="new-todo"
         placeholder="Type new todo"
         autofocus
         type="text"
-        (change)="changeHandler($event)"
+        [formControl]="newTaskCtrl"
+        (keydown.enter)="changeHandler()"
       />
     </div>
   </header>
   <div class="container todoapp-wrapper">
-    <pre>
+    <!-- <pre>
       <code>{{ tasks() | json }}</code>
-    </pre>
+    </pre> -->
     <section class="main">
       <ul class="todo-list">
         <li
@@ -55,7 +57,7 @@
     <footer class="footer">
       <span class="todo-count">
         <strong>{{ tasks().length }}</strong>
-        <span *ngIf="tasks().length === 1;   else elseBlock"> item</span>
+        <span *ngIf="tasks().length === 1; else elseBlock"> item</span>
         <ng-template #elseBlock> items</ng-template>
       </span>
       <ul class="filters">
