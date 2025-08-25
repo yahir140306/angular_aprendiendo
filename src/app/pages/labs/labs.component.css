@@ -8,3 +8,9 @@ section {
   box-shadow: 0px 5px 10px #000;
   border-radius: 10px;
 }
+
+.box {
+  height: 10px;
+  display: block;
+  background-color: red;
+}
