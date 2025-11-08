@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  Injector,
+  signal,
+} from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { Task } from '../../models/task.model';
@@ -14,16 +21,16 @@ import { RouterLink } from '@angular/router';
 })
 export class HomeComponent {
   tasks = signal<Task[]>([
-    {
-      id: Date.now(),
-      title: 'Crear proyecto',
-      completed: false,
-    },
-    {
-      id: Date.now(),
-      title: 'Crear componente',
-      completed: false,
-    },
+    // {
+    //   id: Date.now(),
+    //   title: 'Crear proyecto',
+    //   completed: false,
+    // },
+    // {
+    //   id: Date.now(),
+    //   title: 'Crear componente',
+    //   completed: false,
+    // },
   ]);
 
   filter = signal<'all' | 'pending' | 'completed'>('all');
@@ -47,6 +54,28 @@ export class HomeComponent {
     nonNullable: true,
     validators: [Validators.required],
   });
+
+  injector = inject(Injector);
+
+  ngOnInit() {
+    const storage = localStorage.getItem('tasks');
+    if (storage) {
+      const tasks = JSON.parse(storage);
+      this.tasks.set(tasks);
+    }
+    this.trackTasks();
+  }
+
+  trackTasks() {
+    effect(
+      () => {
+        const tasks = this.tasks();
+        console.log(tasks);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+      },
+      { injector: this.injector }
+    );
+  }
 
   // changeHandler(event: Event) {
   //   const input = event.target as HTMLInputElement;
