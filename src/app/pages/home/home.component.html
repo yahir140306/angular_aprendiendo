@@ -15,6 +15,9 @@
       />
     </div>
   </header>
+
+  <!-- <h1>{{ filter() }}</h1> -->
+
   <div class="container todoapp-wrapper">
     <!-- <pre>
       <code>{{ tasks() | json }}</code>
@@ -23,10 +26,11 @@
       <ul class="todo-list">
         <li
           (dblclick)="updateTaskEditingMode(i)"
-          *ngFor="let task of tasks(); index as i"
+          *ngFor="let task of tasksByFilter(); index as i"
           [class.editing]="task.editing"
           [class.completed]="task.completed"
         >
+          <!-- *ngFor="let task of tasks(); index as i" ☝️ -->
           <div class="view">
             <input
               class="toggle"
@@ -69,13 +73,13 @@
       </span>
       <ul class="filters">
         <li>
-          <a routerLink="/" class="selected">All</a>
+          <a (click)="changeFilter('all')" class="selected">All</a>
         </li>
         <li>
-          <a routerLink="/pending">Pending</a>
+          <a (click)="changeFilter('pending')">Pending</a>
         </li>
         <li>
-          <a routerLink="/completed">Completed</a>
+          <a (click)="changeFilter('completed')">Completed</a>
         </li>
       </ul>
       <button class="clear-completed">Clear completed</button>
